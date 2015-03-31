@@ -483,5 +483,101 @@
         },
       },
     },
+    {
+      'target_name': 'test-timer',
+      'type': 'executable',
+      'dependencies': [ 'libuv' ],
+      'sources': [
+        'run/timer.c',
+      ],
+      'conditions': [
+        [ 'OS=="win"', {
+          'libraries': [ '-lws2_32' ]
+        }, { # POSIX
+          'defines': [ '_GNU_SOURCE' ],
+        }],
+        [ 'OS=="solaris"', { # make test-fs.c compile, needs _POSIX_C_SOURCE
+          'defines': [
+            '__EXTENSIONS__',
+            '_XOPEN_SOURCE=500',
+          ],
+        }],
+        [ 'OS=="aix"', {     # make test-fs.c compile, needs _POSIX_C_SOURCE
+          'defines': [
+            '_ALL_SOURCE',
+            '_XOPEN_SOURCE=500',
+          ],
+        }],
+      ],
+      'msvs-settings': {
+        'VCLinkerTool': {
+          'SubSystem': 1, # /subsystem:console
+        },
+      },
+    },
+    {
+      'target_name': 'test-timer-again',
+      'type': 'executable',
+      'dependencies': [ 'libuv' ],
+      'sources': [
+        'run/timer-again.c',
+      ],
+      'conditions': [
+        [ 'OS=="win"', {
+          'libraries': [ '-lws2_32' ]
+        }, { # POSIX
+          'defines': [ '_GNU_SOURCE' ],
+        }],
+        [ 'OS=="solaris"', { # make test-fs.c compile, needs _POSIX_C_SOURCE
+          'defines': [
+            '__EXTENSIONS__',
+            '_XOPEN_SOURCE=500',
+          ],
+        }],
+        [ 'OS=="aix"', {     # make test-fs.c compile, needs _POSIX_C_SOURCE
+          'defines': [
+            '_ALL_SOURCE',
+            '_XOPEN_SOURCE=500',
+          ],
+        }],
+      ],
+      'msvs-settings': {
+        'VCLinkerTool': {
+          'SubSystem': 1, # /subsystem:console
+        },
+      },
+    },
+    {
+      'target_name': 'test-timer-from-check',
+      'type': 'executable',
+      'dependencies': [ 'libuv' ],
+      'sources': [
+        'run/timer-from-check.c',
+      ],
+      'conditions': [
+        [ 'OS=="win"', {
+          'libraries': [ '-lws2_32' ]
+        }, { # POSIX
+          'defines': [ '_GNU_SOURCE' ],
+        }],
+        [ 'OS=="solaris"', { # make test-fs.c compile, needs _POSIX_C_SOURCE
+          'defines': [
+            '__EXTENSIONS__',
+            '_XOPEN_SOURCE=500',
+          ],
+        }],
+        [ 'OS=="aix"', {     # make test-fs.c compile, needs _POSIX_C_SOURCE
+          'defines': [
+            '_ALL_SOURCE',
+            '_XOPEN_SOURCE=500',
+          ],
+        }],
+      ],
+      'msvs-settings': {
+        'VCLinkerTool': {
+          'SubSystem': 1, # /subsystem:console
+        },
+      },
+    },
   ]
 }
